@@ -4,7 +4,6 @@ plugins {
 
 group = 'com.kodilla'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
 
 java {
     sourceCompatibility = '17'
@@ -16,7 +15,7 @@ repositories {
 
 dependencies {
 
- }
+}
 
 tasks.named('test') {
     useJUnitPlatform()

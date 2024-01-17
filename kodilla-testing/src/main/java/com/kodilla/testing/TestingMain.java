@@ -1,13 +1,12 @@
 package com.kodilla.testing;
 
-import com.kodilla.testing.calculator.Calculator;
 import com.kodilla.testing.user.SimpleUser;
+import com.kodilla.testing.calculator.Calculator;
 
 public class TestingMain {
 
     public static void main(String[] args) {
-
-        /*SimpleUser simpleUser = new SimpleUser("theForumUser");
+        SimpleUser simpleUser = new SimpleUser("theForumUser");
 
         String result = simpleUser.getUsername();
 
@@ -15,7 +14,8 @@ public class TestingMain {
             System.out.println("test OK");
         } else {
             System.out.println("Error!");
-        } */
+        }
+
 
         Calculator calculator = new Calculator();
 
@@ -32,5 +32,6 @@ public class TestingMain {
         else {
             System.out.println("Error");
         }
+
     }
 }
