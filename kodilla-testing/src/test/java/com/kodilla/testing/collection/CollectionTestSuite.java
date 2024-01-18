@@ -31,6 +31,7 @@ public class CollectionTestSuite {
         //When
         //outcomeList = o.exterminate(List.of(1,2,3,4,10,15,19,22,23));
         outcomeList = o.exterminate(inputList);
+        System.out.println("Outcome: " + outcomeList);
 
         //Then
         Assertions.assertEquals(exceptedOutcomeList, outcomeList);
@@ -48,6 +49,7 @@ public class CollectionTestSuite {
         //When
         List<Integer> outcomeList = o.exterminate(List.of(1,2,3,4,10,15,19,22,23));
         //List<Integer> outcomeList = o.exterminate(Arrays.asList(inputList));      //Extra assignment
+        System.out.println("Outcome: " + outcomeList);
 
         //Then
         Assertions.assertEquals(exceptedOutcomeList, outcomeList);
