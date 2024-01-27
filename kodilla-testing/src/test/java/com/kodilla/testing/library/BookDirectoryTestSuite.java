@@ -91,9 +91,8 @@ public class BookDirectoryTestSuite {
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
     }
 
-    @DisplayName("Method supplied with empty list of borrowed books by user should return empty list")
     @Test
-    void testListBooksInHandsOfBorrowedZero() {
+    void testListBooksInHandsOf_BorrowedZero() {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
@@ -106,50 +105,39 @@ public class BookDirectoryTestSuite {
         assertEquals(0, listOfBorrowedBooks.size());
     }
 
-    @DisplayName("Method supplied with list of single borrowed by user book should return list with one element")
     @Test
-    void testListBooksInHandsOfBorrowedOne() {
+    void testListBooksInHandsOf_BorrowedOne() {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         LibraryUser user = new LibraryUser("John", "Collins", "123456789");
         List<Book> listOf40Books = generateListOfNBooks(40);
-
-        //libraryDatabaseMock.rentABook(user, listOf40Books.get(4));
-
-        List<Book> listOfBorrowedBooks = new ArrayList<>();
-        listOfBorrowedBooks.add(listOf40Books.get(4));
+        libraryDatabaseMock.rentABook(user, listOf40Books.get(4));
 
         // When
-        //List<Book> listOfBorrowedBooks = bookLibrary.listBooksInHandsOf(user);
+        List<Book> listOfBorrowedBooks = bookLibrary.listBooksInHandsOf(user);
 
         // Then
         assertEquals(1, listOfBorrowedBooks.size());
         assertEquals(listOf40Books.get(4), listOfBorrowedBooks.get(0));
     }
 
-    @DisplayName("Method supplied with list of five borrowed by user booka should return list with five elements")
     @Test
-    void testListBooksInHandsOfBorrowedFive() {
+    void testListBooksInHandsOf_BorrowedFive() {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         LibraryUser user = new LibraryUser("John", "Collins", "123456789");
         List<Book> listOf40Books = generateListOfNBooks(40);
-        List<Book> listOfBorrowedBooks = new ArrayList<>();
-        listOfBorrowedBooks.add(listOf40Books.get(0));
-        listOfBorrowedBooks.add(listOf40Books.get(4));
-        listOfBorrowedBooks.add(listOf40Books.get(6));
-        listOfBorrowedBooks.add(listOf40Books.get(18));
-        listOfBorrowedBooks.add(listOf40Books.get(39));
-        /*libraryDatabaseMock.rentABook(user, listOf40Books.get(0));
+        libraryDatabaseMock.rentABook(user, listOf40Books.get(0));
         libraryDatabaseMock.rentABook(user, listOf40Books.get(4));
         libraryDatabaseMock.rentABook(user, listOf40Books.get(6));
         libraryDatabaseMock.rentABook(user, listOf40Books.get(18));
-        libraryDatabaseMock.rentABook(user, listOf40Books.get(39));*/
+        libraryDatabaseMock.rentABook(user, listOf40Books.get(39));
+
 
         // When
-        //List<Book> listOfBorrowedBooks = bookLibrary.listBooksInHandsOf(user);
+        List<Book> listOfBorrowedBooks = bookLibrary.listBooksInHandsOf(user);
 
         // Then
         assertEquals(5, listOfBorrowedBooks.size());

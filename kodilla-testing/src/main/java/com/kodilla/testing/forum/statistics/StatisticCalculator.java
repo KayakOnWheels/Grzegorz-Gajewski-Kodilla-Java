@@ -25,14 +25,14 @@ public class StatisticCalculator {
         commentCount = statistics.commentsCount();
 
         if(userCount != 0) {
-            averagePostCountPerUser = (double)postCount / userCount;
-            averageCommentCountPerUser = (double)commentCount / userCount;
+            averagePostCountPerUser = postCount / (double)userCount;
+            averageCommentCountPerUser = commentCount / (double)userCount;
         } else {
             averagePostCountPerUser = -1;
             averageCommentCountPerUser = -1;
         }
         if(postCount != 0) {
-            averageCommentCountPerPost = (double)commentCount / postCount;
+            averageCommentCountPerPost = commentCount / (double)postCount;
         } else {
             averageCommentCountPerPost = -1;
         }
