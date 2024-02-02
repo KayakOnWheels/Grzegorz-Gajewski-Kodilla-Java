@@ -4,6 +4,7 @@ import com.kodilla.stream.book.Book;
 import com.kodilla.stream.book.BookDirectory;
 import com.kodilla.stream.forumuser.Forum;
 import com.kodilla.stream.forumuser.ForumUser;
+import com.kodilla.stream.portfolio.StringReverser;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
