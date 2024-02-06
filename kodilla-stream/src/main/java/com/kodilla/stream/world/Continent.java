@@ -5,7 +5,6 @@ import java.util.*;
 
 public class Continent {
 
-    //private Map<String, Country> countriesOnContinent = new HashMap<>();
     private Set<Country>  countriesOnContinent= new HashSet<>();
 
     public Continent(Set<Country> countries) {
