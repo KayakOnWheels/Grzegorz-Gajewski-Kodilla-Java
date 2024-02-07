@@ -18,6 +18,8 @@ public class IOController {
             case "1" -> "-rock-";
             case "2" -> "-paper-";
             case "3" -> "-scissors-";
+            case "4" -> "-spock-";
+            case "5" -> "-lizard-";
             default -> "";
         };
     }
@@ -39,6 +41,8 @@ public class IOController {
                 1 - rock
                 2 - paper
                 3 - scissors
+                4 - spock
+                5 - lizard
                 m - show menu
                 -----------------------
                 """);
