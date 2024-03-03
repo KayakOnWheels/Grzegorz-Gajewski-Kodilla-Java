@@ -112,10 +112,14 @@ public class BookDirectoryTestSuite {
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         LibraryUser user = new LibraryUser("John", "Collins", "123456789");
         List<Book> listOf40Books = generateListOfNBooks(40);
+        List<Book> listOfBorrowedBooks = bookLibrary.listBooksInHandsOf(user);
+
+        when(libraryDatabaseMock.rentABook(user, listOf40Books.get(4))).thenReturn(listOfBorrowedBooks.add(listOf40Books.get(4)));
         libraryDatabaseMock.rentABook(user, listOf40Books.get(4));
 
+
+
         // When
-        List<Book> listOfBorrowedBooks = bookLibrary.listBooksInHandsOf(user);
 
         // Then
         assertEquals(1, listOfBorrowedBooks.size());
@@ -128,16 +132,23 @@ public class BookDirectoryTestSuite {
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         LibraryUser user = new LibraryUser("John", "Collins", "123456789");
+        List<Book> listOfBorrowedBooks = bookLibrary.listBooksInHandsOf(user);
         List<Book> listOf40Books = generateListOfNBooks(40);
+
+        when(libraryDatabaseMock.rentABook(user, listOf40Books.get(0))).thenReturn(listOfBorrowedBooks.add(listOf40Books.get(0)));
+        when(libraryDatabaseMock.rentABook(user, listOf40Books.get(4))).thenReturn(listOfBorrowedBooks.add(listOf40Books.get(4)));
+        when(libraryDatabaseMock.rentABook(user, listOf40Books.get(6))).thenReturn(listOfBorrowedBooks.add(listOf40Books.get(6)));
+        when(libraryDatabaseMock.rentABook(user, listOf40Books.get(18))).thenReturn(listOfBorrowedBooks.add(listOf40Books.get(18)));
+        when(libraryDatabaseMock.rentABook(user, listOf40Books.get(39))).thenReturn(listOfBorrowedBooks.add(listOf40Books.get(39)));
+
         libraryDatabaseMock.rentABook(user, listOf40Books.get(0));
         libraryDatabaseMock.rentABook(user, listOf40Books.get(4));
         libraryDatabaseMock.rentABook(user, listOf40Books.get(6));
         libraryDatabaseMock.rentABook(user, listOf40Books.get(18));
         libraryDatabaseMock.rentABook(user, listOf40Books.get(39));
 
-
         // When
-        List<Book> listOfBorrowedBooks = bookLibrary.listBooksInHandsOf(user);
+
 
         // Then
         assertEquals(5, listOfBorrowedBooks.size());

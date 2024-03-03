@@ -3,6 +3,7 @@ package com.kodilla.stream.portfolio;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 import static java.util.stream.Collectors.averagingDouble;
@@ -162,11 +163,12 @@ class BoardTestSuite {
         System.out.println(tmp);
 
         double averageWorkingOnTaskDays = tmp.stream()
-                .mapToInt(d -> LocalDate.now().compareTo(d))
+                //.mapToInt(d -> LocalDate.now().compareTo(d))
+                .mapToLong(d -> Math.abs(ChronoUnit.DAYS.between(LocalDate.now(), d)))
                 .average()
                 .orElse(0);
 
-                 //.forEach(System.out::println);
+
         //Then
         assertEquals(10, averageWorkingOnTaskDays);
     }
