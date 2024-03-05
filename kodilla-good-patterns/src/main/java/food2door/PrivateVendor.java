@@ -11,7 +11,8 @@ public class PrivateVendor extends Vendor {
 
     public void prepareOrder() {
         List<Product> productsToOrder =  List.of(getProductsInOffer().get(0));
-        Order order = new Order(this, productsToOrder, 5, new Date(2024, 5, 5));
+        Order order = new Order(this, productsToOrder, 5.0, new Date(2024, 5, 5));
+
         System.out.println("Nothing fancy for this vendor");
     }
 }
