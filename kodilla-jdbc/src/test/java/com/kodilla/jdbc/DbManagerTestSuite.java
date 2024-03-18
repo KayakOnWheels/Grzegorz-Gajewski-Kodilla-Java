@@ -77,19 +77,18 @@ class DbManagerTestSuite {
                 SELECT U.FIRSTNAME, U.LASTNAME, COUNT(*) AS POSTS_COUNT
                 FROM POSTS P
                 JOIN USERS U ON P.USER_ID = U.ID
-                GROUP BY U.ID""";
+                GROUP BY U.ID
+                HAVING POSTS_COUNT > 1""";
         Statement statement = dbManager.getConnection().createStatement();
         ResultSet rs = statement.executeQuery(sqlQuery);
 
         //Then
         int counter = 0;
         while (rs.next()) {
-            if(Integer.parseInt(rs.getString("POSTS_COUNT")) > 1) {
-                System.out.println(rs.getString("FIRSTNAME") + ", " +
-                        rs.getString("LASTNAME") + ", " +
-                        rs.getString("POSTS_COUNT"));
-                counter++;
-            }
+            System.out.println(rs.getString("FIRSTNAME") + ", " +
+                    rs.getString("LASTNAME") + ", " +
+                    rs.getString("POSTS_COUNT"));
+            counter++;
         }
         rs.close();
         statement.close();
