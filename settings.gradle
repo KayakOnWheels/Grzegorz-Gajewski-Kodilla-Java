@@ -11,4 +11,5 @@ include 'kodilla-spring-web'
 include 'patterns'
 include 'kodilla-db'
 include 'kodilla-jdbc'
+include 'kodilla-sudoku'
 
