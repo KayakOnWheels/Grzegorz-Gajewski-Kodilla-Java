@@ -2,6 +2,10 @@ package com.kodilla.hibernate.manytomany.dao;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
+import com.kodilla.hibernate.manytomany.facade.CompanyDto;
+import com.kodilla.hibernate.manytomany.facade.CompanyFacade;
+import com.kodilla.hibernate.manytomany.facade.CompanyFacadeException;
+import com.kodilla.hibernate.manytomany.facade.EmployeeDto;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,6 +23,8 @@ class CompanyDaoTestSuite {
     private CompanyDao companyDao;
     @Autowired
     private EmployeeDao employeeDao;
+    @Autowired
+    private CompanyFacade companyFacade;
 
     private Employee johnSmith = new Employee("John", "Smith");
     private Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
@@ -133,4 +139,21 @@ class CompanyDaoTestSuite {
             //do nothing
         }
     }
+
+    @Test
+    void shouldRetrieveCompaniesAndEmployeesByPhrase(){
+        //Given
+        EmployeeDto employeeDto = new EmployeeDto("Clar");
+        CompanyDto companyDto = new CompanyDto("Mat");
+
+        //When
+        companyFacade.processSearch(companyDto, employeeDto);
+
+        //Then
+
+        //CleanUp
+        companyDao.deleteAll();
+        employeeDao.deleteAll();
+    }
+
 }
