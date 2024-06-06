@@ -3,6 +3,8 @@ package com.kodilla.patterns2.observer.homework;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 
 @SpringBootTest
 public class TakQueueTestSuite {
@@ -31,7 +33,10 @@ public class TakQueueTestSuite {
         taskQueue2.addTask("t6");
         taskQueue3.addTask("t7");
 
-        //Given
+        //Then
+        assertEquals(2, mentor1.getTaskAssigned());
+        assertEquals(4, mentor2.getTaskAssigned());
+        assertEquals(1, mentor3.getTaskAssigned());
 
     }
 }
