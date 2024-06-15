@@ -9,7 +9,7 @@ public class GoogleTestingApp {
     public static final String SEARCHFIELD = "q";                       // [1]
 
     public static void main(String[] args) {
-        WebDriver driver = WebDriverConfig.getDriver(WebDriverConfig.FIREFOX); // [2]
+        WebDriver driver = WebDriverConfig.getDriver(WebDriverConfig.FIREFOX).get(); // [2]
         driver.get("https://www.google.com");                                 // [3]
 
         driver.findElement(By.xpath("//*[@id=\"L2AGLb\"]/div")).click(); // [4]
